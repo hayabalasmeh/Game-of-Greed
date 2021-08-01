@@ -11,13 +11,5 @@ class GameLogic:
         return sample(range(1,6+1),num)
         
 
-class Banker:
-    def shelf():
-        pass    
-    def bank():
-        pass 
-    def clear_shelf():
-        pass
-    
     
     
