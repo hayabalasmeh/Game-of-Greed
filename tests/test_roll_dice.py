@@ -5,7 +5,8 @@
 - The output of `roll_dice` is a tuple with random values between 1 and 6.
 - The length of tuple must match the argument given to `roll_dice` method.
 """
-import pytest
+import pytest 
+
 from game_of_greed.game_logic import GameLogic
 
 pytestmark = [pytest.mark.version_1]
