@@ -1,14 +1,10 @@
 
-from random import sample
+from random import sample , randint
 from collections import Counter
 
 class GameLogic:
     
     @staticmethod
-    def calculate_score():
-        pass
-        
-
     def calculate_score(number):
         game_rules = {
         
@@ -64,23 +60,15 @@ class GameLogic:
        
         else:
           for element in list_repetition:
-            
-
              score = score + game_rules.get(element,0)
 
         return score 
 
-       
-
-        
-
-
-
-
     
     @staticmethod
     def roll_dice(num):
-        return tuple(sample(range(1,6+1),num))
+        roll_list = [randint(1,6) for _ in range(num)]
+        return tuple(roll_list)
         
 
 class Banker:
