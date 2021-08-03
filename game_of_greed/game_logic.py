@@ -113,5 +113,5 @@ class Banker:
 if __name__ == '__main__':
     print('work')
     x = GameLogic()
-    x.get_scorers((1,2,5,))
+    x.get_scorers((1,1,5,))
     
