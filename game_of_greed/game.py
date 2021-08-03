@@ -21,7 +21,7 @@ class Game:
             print('OK. Maybe another time')
             start = False 
         while start:
-         
+          
           if start_or_not.lower() == 'y':
             print('Starting round {}'.format(self.count))
             print('Rolling 6 dice...')
@@ -37,9 +37,11 @@ class Game:
             break
           elif respone != 'b':
              data = []
-             p = respone.split()      
+             
+             p = list(respone)     
              for i in p:
                 data.append(int(i)) 
+                    
              self.score = GameLogic.calculate_score(tuple(data))
              self.result = GameLogic.calculate_score(tuple(data))
              dice = 6-len(p) 
