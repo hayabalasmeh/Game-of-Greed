@@ -68,7 +68,29 @@ class GameLogic:
     def roll_dice(num):
         roll_list = [randint(1,6) for _ in range(num)]
         return tuple(roll_list)
+    @staticmethod
+    def validate_keepers(roll, keepers):
+        res = set(keepers).issubset(roll)
+        if GameLogic.calculate_score(roll) < GameLogic.calculate_score(keepers):
+            x= False
+        else:
+            x = True    
+        return res and x
+    @staticmethod
+    def get_scorers(test_input):
+        test_out = []
+        if GameLogic.calculate_score(test_input) == 0:
+                return tuple()
+        for value in test_input:
+            x = [value]
+            if GameLogic.calculate_score(tuple(x)) != 0:
+                test_out.append(value)
+        return tuple(test_out)
+            
+                
         
+        
+                
 
 class Banker:
  
@@ -86,7 +108,9 @@ class Banker:
 
     
 
-       
-    
-    
 
+if __name__ == '__main__':
+    print('work')
+    x = GameLogic()
+    x.get_scorers((1,2,5,))
+    
