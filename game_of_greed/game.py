@@ -3,10 +3,10 @@ from game_of_greed.game_logic import GameLogic
 class Game:
 
     def __init__(self):
-        pass
-       
+        self.round = 0
+        # self.roller = roller or GameLogic.roll_dice
     
-    def play (self,roller):
+    def play (self,roller= GameLogic.roll_dice(6)):
 
         print('Welcome to Game of Greed')
         print('(y)es to play or (n)o to decline')
@@ -16,7 +16,8 @@ class Game:
         if response.lower() == 'y' or response.lower()=='yes':
             print('Starting round 1')
             print('Rolling 6 dice...')
-            print('*** 4 4 5 2 3 1 ***')
+
+            print(f'*** {roller} ***')
             print('Enter dice to keep, or (q)uit:')
             response = input('> ')
             if  response.lower() == 'q':
