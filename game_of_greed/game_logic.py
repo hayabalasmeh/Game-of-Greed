@@ -116,17 +116,11 @@ if  __name__ == "__main__":
    
 
 
-## (1,2,3,1) -- (1,1)
-# (1)
-## for element in list_repetition: 
-##
-             ## if game_rules.get(element,0) == 0 
-             ## (1,2) ()
-             ## 
+
 
 
 if __name__ == '__main__':
     print('work')
     x = GameLogic()
-    x.get_scorers((1,2,5,))
+   
     
