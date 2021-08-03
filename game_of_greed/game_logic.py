@@ -3,10 +3,7 @@ from random import sample , randint
 from collections import Counter
 
 class GameLogic:
-    
-    @staticmethod
-    def calculate_score(number):
-        game_rules = {
+     game_rules = {
         
         (1,1): 100,
         (1, 2): 200,
@@ -48,7 +45,10 @@ class GameLogic:
         (2, 2, 3, 3, 4, 6): 0,
         (2, 2, 3, 3, 6, 6): 1500,
         (1, 1, 1, 2, 2, 2): 1200,
-            }    
+            } 
+    @staticmethod
+    def calculate_score(number):
+          
 
         score = 0 
         dice_Counter = Counter(number) 
@@ -85,9 +85,24 @@ class Banker:
     def clear_shelf(self):
         self.shelved =0 
 
+if  __name__ == "__main__":
+    values = (1,2,3,1) 
+    output = (1,1)
+    values_counter = Counter(values)
+    tuples = values_counter.most_common()
+    list = []
     
+    for element in tuples:
+        if game_rules.get(element,0)
 
-       
-    
-    
+
+## (1,2,3,1) -- (1,1)
+# (1)
+## for element in list_repetition: 
+##
+             ## if game_rules.get(element,0) == 0 
+             ## (1,2) ()
+             ## 
+
+
 
