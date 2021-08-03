@@ -69,7 +69,15 @@ class GameLogic:
     def roll_dice(num):
         roll_list = [randint(1,6) for _ in range(num)]
         return tuple(roll_list)
-        
+    @staticmethod
+    def validate_keepers(roll, keepers):
+        res = set(keepers).issubset(roll)
+        if GameLogic.calculate_score(roll) < GameLogic.calculate_score(keepers):
+            x= False
+        else:
+            x = True    
+        return res and x
+            
 
 class Banker:
  
