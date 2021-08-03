@@ -46,6 +46,7 @@ class Game:
         self.bank = 0
         self.score = 0
         self.result = 0
+        self.input_num = []
 
     
     def play(self,roller=None):
@@ -56,14 +57,15 @@ class Game:
         self.count+=1
         start_or_not = input('> ')
         start = True
+        if_r = 'no'
         if start_or_not.lower() == 'n':
             print('OK. Maybe another time')
             start = False 
         while start:
           
-          if start_or_not.lower() == 'y':
+          if start_or_not.lower() == 'y' and type(if_r) == str:
             print('Starting round {}'.format(self.count))
-            print('Rolling 6 dice...')
+            print('Rolling {} dice...'.format(6))
             roll = roller(dice)
             roll_str = ""
             for num in roll:
@@ -75,63 +77,39 @@ class Game:
             print('Thanks for playing. You earned {} points'.format(self.bank)) 
             break
           elif respone != 'b':
-             data = []
+            #  data = []
              p = list(respone)     
-             for i in p:
-                data.append(int(i)) 
+            #  for i in p:
+             data = [int(char) for char in p if char.isdigit()]
              self.score = GameLogic.calculate_score(tuple(data))
              self.result = GameLogic.calculate_score(tuple(data))
-             dice_one = 6-len(p) 
+             dice_one = dice-len(p)
+             self.input_num = p
              print('You have {} unbanked points and {} dice remaining'.format(self.result,dice_one))
              print('(r)oll again, (b)ank your points or (q)uit:')
              respone = input('> ')
+             if_r = "1"
           if respone == 'b': 
             self.bank += self.score
             print('You banked {} points in round {}'.format(self.result,self.count))
             self.count+=1
             print('Total score is {} points'.format(self.bank))
             self.result = 0
-          if respone == "r":
-            
-            print(f'Rolling {dice_one} dice...')
-            roll = roller(dice_one)
+            if_r = "1"
+          if respone == 'r':
+            dice = dice-len(p)
+            print('Rolling {} dice...'.format(dice))
+            roll = roller(dice)
             roll_str = ""
             for num in roll:
                 roll_str += str(num) + " "
             print(f"*** {roll_str}***")
             print('Enter dice to keep, or (q)uit:')
-            response = input('> ')
-            data = []
-            p = list(response)     
-            for i in p:
-                data.append(int(i)) 
-            self.score = GameLogic.calculate_score(tuple(data))
-            self.result = GameLogic.calculate_score(tuple(data))
-            dice_two = 6-len(p) 
-            print('You have {} unbanked points and {} dice remaining'.format(self.result,dice_two))
-            print('(r)oll again, (b)ank your points or (q)uit:')
-            response = input('> ')
+            if_r = 1
+            respone = input('> ')
             
-            if response == 'b': 
-                self.bank += self.score
-                print('You banked {} points in round {}'.format(self.result,self.count))
-                self.count+=1
-                print('Total score is {} points'.format(self.bank))
-                self.result = 0
-                print('Starting round {}'.format(self.count))
-                print('Rolling 6 dice...')
-                roll = roller(dice_two)
-                roll_str = ""
-                for num in roll:
-                    roll_str += str(num) + " "
-                print(f"*** {roll_str}***")
-                print('Enter dice to keep, or (q)uit:')
-                response = input('> ')
-                if respone == 'q':
-                   print('Thanks for playing. You earned {} points'.format(self.bank)) 
-                   break
-
-
+          
+             
 
             
 
