@@ -3,7 +3,10 @@ from random import sample , randint
 from collections import Counter
 
 class GameLogic:
-     game_rules = {
+    
+    @staticmethod
+    def calculate_score(number):
+        game_rules = {
         
         (1,1): 100,
         (1, 2): 200,
@@ -46,8 +49,6 @@ class GameLogic:
         (2, 2, 3, 3, 6, 6): 1500,
         (1, 1, 1, 2, 2, 2): 1200,
             } 
-    @staticmethod
-    def calculate_score(number):
           
 
         score = 0 
@@ -69,7 +70,29 @@ class GameLogic:
     def roll_dice(num):
         roll_list = [randint(1,6) for _ in range(num)]
         return tuple(roll_list)
+    @staticmethod
+    def validate_keepers(roll, keepers):
+        res = set(keepers).issubset(roll)
+        if GameLogic.calculate_score(roll) < GameLogic.calculate_score(keepers):
+            x= False
+        else:
+            x = True    
+        return res and x
+    @staticmethod
+    def get_scorers(test_input):
+        test_out = []
+        if GameLogic.calculate_score(test_input) == 0:
+                return tuple()
+        for value in test_input:
+            x = [value]
+            if GameLogic.calculate_score(tuple(x)) != 0:
+                test_out.append(value)
+        return tuple(test_out)
+            
+                
         
+        
+                
 
 class Banker:
  
@@ -90,10 +113,7 @@ if  __name__ == "__main__":
     output = (1,1)
     values_counter = Counter(values)
     tuples = values_counter.most_common()
-    list = []
-    
-    for element in tuples:
-        if game_rules.get(element,0)
+   
 
 
 ## (1,2,3,1) -- (1,1)
@@ -105,4 +125,8 @@ if  __name__ == "__main__":
              ## 
 
 
-
+if __name__ == '__main__':
+    print('work')
+    x = GameLogic()
+    x.get_scorers((1,2,5,))
+    

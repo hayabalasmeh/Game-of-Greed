@@ -21,3 +21,5 @@ pytestmark = [pytest.mark.version_3]
 def test_get_scorers(test_input, expected):
     actual = GameLogic.get_scorers(test_input)
     assert sorted(actual) == sorted(expected)
+    
+    

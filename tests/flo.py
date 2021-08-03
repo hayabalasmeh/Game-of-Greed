@@ -111,3 +111,4 @@ def _find_differences(text, expected_lines):
     diffed = difflib.unified_diff(actual_lines, expected_lines, lineterm="")
 
     return "\n".join(diffed)
+
