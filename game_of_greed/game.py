@@ -32,6 +32,7 @@ class Game:
             roll = roller(dice)
             if GameLogic.calculate_score(tuple(roll)) == 0:
               if_r = '1'
+              dice = 6
               print('****************************************')
               print('**        Zilch!!! Round over         **')
               print('****************************************')  
@@ -44,7 +45,7 @@ class Game:
             print(f"*** {roll_str}***")
             print('Enter dice to keep, or (q)uit:')
             respone = input('> ')
-          if respone == 'q':
+          if respone == 'q' or self.count == 100:
             print('Thanks for playing. You earned {} points'.format(self.bank)) 
             break
           elif respone != 'b':
@@ -60,6 +61,7 @@ class Game:
                roll = roller(dice)
                if GameLogic.calculate_score(roll) == 0:
                 if_r = '1'
+                dice = 6
                 print('****************************************')
                 print('**        Zilch!!! Round over         **')
                 print('****************************************')  
@@ -82,6 +84,7 @@ class Game:
                self.input_num = data
              if GameLogic.calculate_score(roll) == 0:
                 if_r = '1'
+                dice = 6
                 print('****************************************')
                 print('**        Zilch!!! Round over         **')
                 print('****************************************')  
@@ -118,7 +121,7 @@ class Game:
             print(f"*** {roll_str}***")
             if GameLogic.calculate_score(roll) == 0:
                 if_r = '1'
-                
+                dice = 6
                 print('****************************************')
                 print('**        Zilch!!! Round over         **')
                 print('****************************************')  
@@ -144,17 +147,4 @@ if __name__ =='__main__':
 
 
 
-# if respone == '5':
-#     print('You have 50 unbanked points and 5 dice remaining')
-#     print('(r)oll again, (b)ank your points or (q)uit:')
-#     bank= input('> ') 
-#     if bank == 'b':
-#         print('You banked 50 points in round 1')
-#         print('Total score is 50 points')
-#         print('Starting round 2')
-#         print('Rolling 6 dice...')
-#         print('*** 6 4 5 2 3 1 ***') 
-#         print('Enter dice to keep, or (q)uit:')
-#         respone_after = input('> ') 
-#         if respone_after == 'q':
-#             print('Thanks for playing. You earned 50 points')      
+    

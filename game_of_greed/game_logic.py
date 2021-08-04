@@ -79,20 +79,17 @@ class GameLogic:
         return res and x
     @staticmethod
     def get_scorers(test_input):
-        test_out = []
-        if GameLogic.calculate_score(test_input) == 0:
-                return tuple()
-        for value in test_input:
-            x = [value]
-            if GameLogic.calculate_score(tuple(x)) != 0:
-                test_out.append(value)
-        return tuple(test_out)
-            
+        score = GameLogic.calculate_score(test_input)
+        if score == 0:
+            return tuple()
+        output = []
+        for i in range(len(test_input)):
+            if GameLogic.calculate_score(tuple(test_input[:i]+test_input[i+1:])) != score:
+                output.append(test_input[i])
+        return tuple(output)        
+      
+      
                 
-        
-        
-                
-
 class Banker:
  
     def __init__(self):
@@ -108,8 +105,6 @@ class Banker:
         self.shelved =0 
 
     
-
-
 if __name__ == '__main__':
     print('work')
     x = GameLogic()
