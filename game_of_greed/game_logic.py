@@ -48,7 +48,8 @@ class GameLogic:
         (2, 2, 3, 3, 4, 6): 0,
         (2, 2, 3, 3, 6, 6): 1500,
         (1, 1, 1, 2, 2, 2): 1200,
-            }    
+            } 
+          
 
         score = 0 
         dice_Counter = Counter(number) 
@@ -108,5 +109,5 @@ class Banker:
 if __name__ == '__main__':
     print('work')
     x = GameLogic()
-    x.get_scorers((1,1,5,))
+   
     
